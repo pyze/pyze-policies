@@ -18,9 +18,14 @@ Adds / updates / removes:
 
 ## Surfacing quality
 
-- [ ] `description` mentions the trigger contexts explicitly
-- [ ] Considered skill-creator eval for description robustness
-- [ ] Manual check: would Claude surface this when the example incident recurs?
+Rubric: pyze-workflow [`surfacing-quality`](https://github.com/pyze/pyze-workflow/blob/main/skills/surfacing-quality/SKILL.md) skill — 5 checks. Score: __/5.
+
+- [ ] `description` names the trigger contexts explicitly (artifacts, phases, user phrasings)
+- [ ] `description` contains a "use when / before / after / whenever / while" verb cue
+- [ ] `description` length 80–400 chars
+- [ ] `description` includes ≥1 specific term that prevents spurious firing
+- [ ] Manual surfacing test: would Claude have loaded this for the originating incident?
+- [ ] (Optional) Ran `skill-creator:skill-creator`'s `improve_description.py` for deeper eval
 
 ## Checklist
 
