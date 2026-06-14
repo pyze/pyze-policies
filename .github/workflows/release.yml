@@ -1,0 +1,28 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Extract notes from CHANGELOG
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          awk -v v="$VERSION" '
+            $0 ~ "^## v"v"( |$)" { flag=1; next }
+            flag && /^## / { exit }
+            flag { print }
+          ' CHANGELOG.md > /tmp/notes.md
+          echo "--- notes ---"
+          cat /tmp/notes.md
+      - uses: softprops/action-gh-release@v2
+        with:
+          body_path: /tmp/notes.md
+          name: ${{ github.ref_name }}

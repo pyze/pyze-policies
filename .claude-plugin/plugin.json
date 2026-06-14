@@ -1,0 +1,17 @@
+{
+  "name": "pyze-policies",
+  "description": "Shared Pyze policies (skills) surfaced via Claude description-match; consumed by pyze-workflow's /policy-sync",
+  "version": "0.1.0",
+  "author": {
+    "name": "Mark Addleman"
+  },
+  "homepage": "https://github.com/pyze/pyze-policies",
+  "repository": "https://github.com/pyze/pyze-policies",
+  "license": "MIT",
+  "keywords": [
+    "policies",
+    "skills",
+    "pyze",
+    "claude-code"
+  ]
+}
