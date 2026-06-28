@@ -1,7 +1,7 @@
 {
   "name": "pyze-policies",
   "description": "Shared Pyze policies (skills) surfaced via Claude description-match; consumed by pyze-workflow's /policy-sync",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": {
     "name": "Mark Addleman"
   },
