@@ -1,0 +1,17 @@
+{
+  "id": "auto-merge-pr",
+  "statement": "Auto-merge a PR autonomously when the pr-review rubric verdict (produced by the fresh scan-pr evaluator) passes all four predicate components: tests green AND 0 critical/medium findings AND policy-audit clean AND change-class allowed (not denylisted). Per #105 D2 this is predicate-only with NO tier backstop — the policy deliberately carries no blast_radius clause, so the gate is tier-agnostic (any tier auto-merges when the predicate holds). Merge is reversible (git revert; post-merge monitor is #109). The runner is a fresh non-implementer agent (scan-pr), so the predicate is mechanical, not self-judgment.",
+  "gate": "auto-merge",
+  "scope": "project",
+  "class": "stable-mechanical",
+  "cynefin": "clear",
+  "predicate": {
+    "all": [
+      { "feature": "tests_green", "op": "eq", "value": true },
+      { "feature": "findings_clean", "op": "eq", "value": true },
+      { "feature": "policy_audit_clean", "op": "eq", "value": true },
+      { "feature": "change_class_allowed", "op": "eq", "value": true }
+    ]
+  },
+  "action": "merge"
+}
