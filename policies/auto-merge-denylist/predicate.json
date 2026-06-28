@@ -1,0 +1,14 @@
+{
+  "id": "auto-merge-denylist",
+  "statement": "NEVER auto-merge when the PR's change-class is on the never-auto-merge denylist — defer to a human gate. The denylist (per #105 D2, shipped conservative) covers: policy edits + gradient-policy proposals; gate-machinery / autonomy-surface changes; cross-repo changes; schema or data migrations; dependency / lockfile changes (supply-chain); and public-surface-without-test. The fresh scan-pr evaluator classifies the diff and sets change_class_allowed=false for any denylisted class (the exact file enumeration lives in the pr-review rubric's change-class taxonomy). This policy keys on change_class_allowed==false — the SAME feature the coverage policy requires true — so the two are provably disjoint (ConflictFreedom). It exists to make the denial an explicit, named defer for the decision corpus rather than a bare 'uncovered'. Conservative: classes are removed only when explicitly proven safe.",
+  "gate": "auto-merge",
+  "scope": "project",
+  "class": "stable-mechanical",
+  "cynefin": "clear",
+  "predicate": {
+    "all": [
+      { "feature": "change_class_allowed", "op": "eq", "value": false }
+    ]
+  },
+  "action": "defer"
+}

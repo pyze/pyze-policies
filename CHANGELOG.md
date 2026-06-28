@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Add `auto-merge-pr` policy (promoted from pyze-workflow via `--from-predicate`; pyze-workflow#121). Predicate gate policy: auto-merge a PR when tests green ∧ 0 critical/medium findings ∧ policy-audit clean ∧ change-class allowed.
+- Add `auto-merge-denylist` policy (promoted from pyze-workflow via `--from-predicate`; pyze-workflow#121). Paired defer: never auto-merge denylisted change-classes; provably disjoint with `auto-merge-pr`.
+
 ## v0.1.0 — 2026-06-14
 
 Bootstrap pyze-policies repo (#63):
